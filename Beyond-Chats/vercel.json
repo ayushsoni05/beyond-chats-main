@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "beyondchats-frontend",
+  "builds": [
+    {
+      "src": "frontend-react/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "frontend-react/dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/frontend-react/dist/$1"
+    }
+  ]
+}

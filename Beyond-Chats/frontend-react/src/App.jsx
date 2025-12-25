@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { fetchArticles } from './api';
 
-function ArticleCard({ article }) {
+function ArticleCard({ article, version }) {
+  const content = version === 'original'
+    ? (article.original_content || article.body || '')
+    : (article.updated_content || article.body || '');
+  const safeContent = (content || '').replace(/\n/g, '<br/>');
   const citations = Array.isArray(article.citations) ? article.citations : [];
+  
   return (
     <article className="card">
       <header>
-        <p className="pill">{article.is_original ? 'Original' : 'Updated'}</p>
-        <h3>{article.title}</h3>
+        <p className="pill">{version === 'original' ? 'Original' : 'Updated'}</p>
+        <h3>{article.title || 'Untitled'}</h3>
         {article.summary && <p className="summary">{article.summary}</p>}
       </header>
-      <div className="body" dangerouslySetInnerHTML={{ __html: article.body.replace(/\n/g, '<br/>') }} />
+      <div className="body" dangerouslySetInnerHTML={{ __html: safeContent }} />
       {citations.length > 0 && (
         <footer>
           <p className="pill ghost">References</p>
@@ -75,7 +80,10 @@ export default function App() {
 
       <section className="grid">
         {articles.map((article) => (
-          <ArticleCard key={article.id} article={article} />
+          <React.Fragment key={article.id}>
+            <ArticleCard article={article} version="original" />
+            <ArticleCard article={article} version="updated" />
+          </React.Fragment>
         ))}
       </section>
     </div>
