@@ -1,0 +1,9 @@
+Latest article: Untitled
+Google top hits: [ 'https://untitledartfairs.com/', 'https://untitled.stream/' ]
+Pipeline error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors. Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+    at APIError.generate (file:///C:/Beyond-Chats/node-pipeline/node_modules/openai/error.mjs:59:20)
+    at OpenAI.makeStatusError (file:///C:/Beyond-Chats/node-pipeline/node_modules/openai/core.mjs:295:25)
+    at OpenAI.makeRequest (file:///C:/Beyond-Chats/node-pipeline/node_modules/openai/core.mjs:339:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async synthesizeWithLLM (file:///C:/Beyond-Chats/node-pipeline/index.js:60:22)
+    at async main (file:///C:/Beyond-Chats/node-pipeline/index.js:93:21)
