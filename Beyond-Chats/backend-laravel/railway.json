@@ -1,0 +1,10 @@
+{
+  "buildCommand": "composer install --no-dev && php artisan migrate --force",
+  "startCommand": "vendor/bin/heroku-php-apache2 public/",
+  "nixpacks": {
+    "providers": ["php"],
+    "php": {
+      "version": "8.2"
+    }
+  }
+}
